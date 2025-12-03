@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { AppStep, SearchCriteria, Company, CompanyAnalysis } from './types';
 import StepIndicator from './components/StepIndicator';
 import CriteriaForm from './components/CriteriaForm';

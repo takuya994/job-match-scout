@@ -1,6 +1,6 @@
 import React from 'react';
-import { CompanyAnalysis, JobRequirement } from '../types';
-import { Briefcase, AlertCircle, CheckCircle, ExternalLink, GraduationCap, Clock } from 'lucide-react';
+import { CompanyAnalysis } from '../types';
+import { AlertCircle, ExternalLink, GraduationCap, Clock } from 'lucide-react';
 
 interface AnalysisResultsProps {
   results: CompanyAnalysis[];
