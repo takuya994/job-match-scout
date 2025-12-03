@@ -8,12 +8,12 @@ interface CriteriaFormProps {
 }
 
 const CriteriaForm: React.FC<CriteriaFormProps> = ({ onSearch, isLoading }) => {
-  // Updated default values based on specific user requirements
+  // Updated to generic default values to demonstrate tool versatility
   const [industryKeywords, setIndustryKeywords] = useState(
-    '核融合技術の研究開発、実験、実証炉の建設・運用を計画している企業。スタートアップから大手重工、建設、プラントエンジニアリング企業まで幅広く。'
+    '次世代自動車（EV・自動運転）の開発、または関連部品の製造を行う企業。スタートアップから大手サプライヤーまで。'
   );
   const [jobKeywords, setJobKeywords] = useState(
-    '【必須条件】大卒でなくとも応募可能な求人、もしくは学歴不問。\n【希望職種】核融合炉の建設、インフラ維持管理、製造現場、または人事・広報・資金集め（ファンドレイジング）・総務などの周辺業務。\n【目的】広い意味で核融合エネルギー開発の実用化に貢献できる仕事。'
+    '【必須条件】未経験歓迎、または異業種からの転職可能。\n【希望職種】企画営業、プロジェクト管理、または生産技術。\n【目的】成長産業で新しいキャリアに挑戦したい。'
   );
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -42,7 +42,7 @@ const CriteriaForm: React.FC<CriteriaFormProps> = ({ onSearch, isLoading }) => {
             value={industryKeywords}
             onChange={(e) => setIndustryKeywords(e.target.value)}
             className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-slate-700 min-h-[80px]"
-            placeholder="例: 核融合実験炉, プラント建設, 重電メーカー..."
+            placeholder="例: 再生可能エネルギー, SaaSスタートアップ, 地方創生事業..."
           />
           <p className="text-xs text-slate-400 mt-1">
             会社四季報やニュースリリース等を元に、この条件に合致する企業を検索します。
@@ -57,7 +57,7 @@ const CriteriaForm: React.FC<CriteriaFormProps> = ({ onSearch, isLoading }) => {
             value={jobKeywords}
             onChange={(e) => setJobKeywords(e.target.value)}
             className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-slate-700 min-h-[120px]"
-            placeholder="例: 大卒不問, 現場施工管理, インフラ維持, 総務・経理..."
+            placeholder="例: 未経験可, フルリモート, マーケティング, 経営企画..."
           />
           <p className="text-xs text-slate-400 mt-1">
             各社の採用ページを解析し、この条件にマッチする求人を抽出・整理して表示します。

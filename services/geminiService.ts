@@ -43,26 +43,29 @@ const extractJson = (text: string): any => {
   }
 };
 
-export const searchFusionCompanies = async (criteria: string): Promise<Company[]> => {
+// Renamed from searchFusionCompanies to searchCompanies to reflect generic usage
+export const searchCompanies = async (criteria: string): Promise<Company[]> => {
   if (!apiKey) throw new Error("API Key is missing");
 
   const prompt = `
     あなたは優秀な市場リサーチャーです。
-    以下の条件に関連する企業を調査してください：
+    ユーザーが指定した以下の【検索条件】に合致する、または関連性の高い企業を調査・リストアップしてください。
+
+    【検索条件】
     「${criteria}」
     
     【検索方針】
     - 日本国内の企業を優先してください。または日本に拠点を持つ主要なグローバル企業。
-    - 会社四季報（Kaisha Shikiho）、日経、企業プレスリリースなどの信頼できる情報源を使用してください。
-    - 実験、開発、実証炉の建設、または核融合施設の運営を計画している企業（スタートアップおよび重工・エンジニアリング企業）を含めてください。
+    - 会社四季報（Kaisha Shikiho）、日経、企業プレスリリース、業界ニュースなどの信頼できる情報源を使用してください。
+    - 大手企業だけでなく、条件に合致する有力なスタートアップや中小企業も視野に入れてください。
     
     【出力形式】
     - 結果は **必ず日本語で** 出力してください。
     - **有効なJSON配列のみ** を返してください。Markdownフォーマットや説明文は含めないでください。
     - 各オブジェクトの構造:
       - "name": 企業名
-      - "description": その企業の核融合事業に関する簡潔な説明（日本語）
-      - "relevance": なぜ条件に合致するか（例：「ITER向け機器を受注」「ヘリカル型装置を開発中」など）
+      - "description": その企業の、検索条件に関連する事業内容や特徴の簡潔な説明（日本語）
+      - "relevance": なぜこの企業が検索条件に合致するかの理由（選定理由）
       - "websiteUrl": 公式ウェブサイトのURL
 
     上位10社程度リストアップしてください。
@@ -115,7 +118,7 @@ export const analyzeCompanyJobs = async (
     "${userCriteria}"
     
     ※注意点:
-    - 基準に「大卒不問」「非研究職」などが含まれる場合は、技能職、製造、建設施工管理、施設維持、または事務・広報・人事などの支援業務を積極的に探してください。
+    - ユーザー基準に特定の条件（「大卒不問」「未経験可」「職種指定」など）がある場合は、それに合致する職種を幅広く探してください。
     - 求人情報は日本国内の募集を優先してください。
     
     【出力形式】

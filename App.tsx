@@ -4,7 +4,7 @@ import StepIndicator from './components/StepIndicator';
 import CriteriaForm from './components/CriteriaForm';
 import CompanyList from './components/CompanyList';
 import AnalysisResults from './components/AnalysisResults';
-import { searchFusionCompanies, analyzeCompanyJobs } from './services/geminiService';
+import { searchCompanies, analyzeCompanyJobs } from './services/geminiService';
 import { Briefcase } from 'lucide-react';
 
 export default function App() {
@@ -21,7 +21,7 @@ export default function App() {
     setSearchCriteria(criteria);
     setIsLoading(true);
     try {
-      const results = await searchFusionCompanies(criteria.industryKeywords);
+      const results = await searchCompanies(criteria.industryKeywords);
       setCompanies(results);
       setCurrentStep(AppStep.SEARCH_COMPANIES);
     } catch (error) {
